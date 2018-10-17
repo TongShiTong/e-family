@@ -11,13 +11,16 @@
 
   <!--轮播图-->
   <div class="slider">
-    <swiper>
-      <swiper-slide>
-        <router-link class="slider-wrap" href="/news" to="/news">
-          <img src="../assets/01.png" alt="">
-          <div class="desc">习近平：”永远做人民公仆，时代先锋，民族脊梁“</div>
-        </router-link>
+    <swiper :options="swiperOption" ref="mySwiper">
+      <swiper-slide v-for="(item,index) in slider" :key="index">
+        <div class="slider-wrap">
+          <router-link class="slider-wrap" href="/news" to="/news">
+            <img :src="item.imgUrl">
+            <div class="desc" v-text="item.title"></div>
+          </router-link>
+        </div>
       </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
 
@@ -93,6 +96,7 @@
 </template>
 
 <script>
+  // import axios from 'axios'
   import tabs from '../components/tabs'
   // import axios from 'axios'
   import {swiper, swiperSlide} from 'vue-awesome-swiper'
@@ -105,6 +109,30 @@
         swiper,
         swiperSlide,
         tabs
+      },
+      data() {
+        return {
+          slider: [],
+          swiperOption: {
+            loop: true,
+            pagination: '.swiper-pagination',
+            autoplay: 0
+          }
+        }
+      },
+      methods: {
+        getSlider() {
+          // axios.get("http://211.67.177.56:8080/hhdj/carousel/carouselList.do?type=0").then(res => {
+          //   this.slider = res.data.rows;
+          // })
+          this.$axios.get("carousel/carouselList.do?type=0").then(res => {
+            console.log(res)
+            this.slider = res.rows;
+          })
+        }
+      },
+      created() {
+        this.getSlider()
       }
     }
 </script>

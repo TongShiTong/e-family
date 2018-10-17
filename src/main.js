@@ -6,7 +6,13 @@ import router from './router'
 // import VueAwesomeSwiper from 'vue-awesome-swiper'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+//引入自己封装好的$axios
+import $axios from './utils'
+//引入store
+import store from './store'
 
+//将$axios挂载到Vue原型上
+Vue.prototype.$axios = $axios
 Vue.use(MintUI)
 // Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
@@ -15,6 +21,8 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  //注入全局Vue实例上
+  store,
   components: { App },
   template: '<App/>'
 })

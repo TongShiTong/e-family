@@ -15,13 +15,15 @@
 
       <form action="" class="form">
         <div class="input-wrap">
-          <input type="text"placeholder="身份证号">
+          <input type="text"placeholder="身份证号" v-model="formData.idnumber">
         </div>
         <div class="input-wrap">
-          <input type="password" value="password" placeholder="密码">
+          <input type="password" value="password" placeholder="密码" v-model="formData.password"
+                 @keyup.enter="handleLogin"
+          >
         </div>
         <div class="login">
-          <mt-button size="large" class="btn">登录</mt-button>
+          <mt-button size="large" class="btn" @click="handleLogin">登录</mt-button>
         </div>
       </form>
 
@@ -29,8 +31,28 @@
 </template>
 
 <script>
+  import { Toast } from 'mint-ui';
     export default {
-        name: "login"
+      name: "login",
+      data() {
+        return {
+          formData: {
+            password: '',
+            idnumber:''
+          }
+        }
+      },
+      methods: {
+        handleLogin() {
+          this.$axios.post('/login', this.formData).then(res => {
+            console.log(res)
+          //  提交一个事件，写入仓库store
+            this.$store.commit('CHANGE_userInfo', res.userData)
+            this.Toast('登录成功')
+            this.$router.push('/')
+          })
+        }
+      }
     }
 </script>
 

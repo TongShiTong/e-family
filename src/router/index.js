@@ -13,7 +13,9 @@ const components = {
   life: () => import('@/views/life'),
   learn: () => import('@/views/learn'),
   organization: () => import('@/views/organization'),
-  free: () => import('@/views/free')
+  free: () => import('@/views/free'),
+  inform: () => import('@/views/inform'),
+  myparty: () => import('@/views/myparty')
 }
 
 export default new Router({
@@ -67,6 +69,16 @@ export default new Router({
       path: '/free',
       name: 'free',
       component: components.free
+    },
+    {
+      path: '/inform',
+      name: 'inform',
+      component: components.inform
+    },
+    {
+      path: '/myparty',
+      name: 'myparty',
+      component: components.myparty
     }
   ]
 })
