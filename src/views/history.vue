@@ -1,14 +1,5 @@
 <template>
     <div class="box">
-      <div class="header clearfix">
-        <div class="header-left fll" @click="$router.push('/')">
-          <img src="../assets/left.png" alt="" class="img">
-        </div>
-        <div class="login fll">
-          党史上的今天
-        </div>
-      </div>
-
       <div class="content">
         <h2 class="title">党史上的今天</h2>
         <h2>1953年10月16日　中共中央通过《关于实行粮食的计划收购与计划供应的决议》</h2>
@@ -33,50 +24,111 @@
 </script>
 
 <style scoped lang="scss">
-  .box  {
-    .header {
-      background: #c50206;
-      width: 100%;
-      height: 1.05rem;
+  .box {
+    .content {
+      padding: 10px;
 
-      .img {
-        padding-bottom: 14px;
-        padding-left: 10px;
+      .title {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.2;
+        font-family: -apple-system, Helvetica Neue, Roboto, Segoe UI, sans-serif;
       }
 
-      .login {
-        padding-left: 102px;
-        line-height: 56px;
-        font-weight: 400;
-        font-size: 17px;
-        color: #fff;
+      h2 {
+        margin-top: 10px;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.2;
+        font-family: -apple-system, Helvetica Neue, Roboto, Segoe UI, sans-serif;
       }
-    }
-  }
 
-  .content {
-    padding: 10px;
-
-    .title {
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 1.2;
-      font-family: -apple-system,Helvetica Neue,Roboto,Segoe UI,sans-serif;
-    }
-
-    h2 {
-      margin-top: 10px;
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 1.2;
-      font-family: -apple-system,Helvetica Neue,Roboto,Segoe UI,sans-serif;
-    }
-
-    p {
-      margin: 10px 0;
-      font-size: 14px;
-      line-height: 2;
-      font-family: -apple-system,Helvetica Neue,Roboto,Segoe UI,sans-serif;
+      p {
+        margin: 10px 0;
+        font-size: 14px;
+        line-height: 2;
+        font-family: -apple-system, Helvetica Neue, Roboto, Segoe UI, sans-serif;
+      }
     }
   }
 </style>
+
+
+<!--<template>-->
+  <!--<div class="wrapper"-->
+       <!--v-loading="loading"-->
+       <!--data-mu-loading-overlay-color="rgba(0, 0, 0, .6)"-->
+       <!--data-mu-loading-color="secondary"-->
+       <!--data-mu-loading-text="正在拼命加载中..."-->
+  <!--&gt;-->
+    <!--<Header :title="this.$route.meta.title"></Header>-->
+    <!--<div class="detail-wrap content" v-html="historyData">-->
+
+    <!--</div>-->
+  <!--</div>-->
+<!--</template>-->
+
+<!--<script>-->
+  <!--import getData from '@/utils/getData'-->
+  <!--import cheerio from 'cheerio'-->
+
+  <!--export default {-->
+    <!--name:'',-->
+    <!--data() {-->
+      <!--return {-->
+        <!--historyData: '',-->
+        <!--loading: false-->
+      <!--}-->
+    <!--},-->
+    <!--components: {-->
+
+    <!--},-->
+    <!--methods: {-->
+      <!--getPartyHistory() {-->
+        <!--this.loading = true-->
+        <!--var date = new Date()-->
+        <!--var month = date.getMonth() + 1-->
+        <!--var day = date.getDate()-->
+        <!--month = month < 10 ? '0' + month : '' + month-->
+        <!--day = day < 10 ? '0' + day : '' + day-->
+        <!--let url = getData(month,day)-->
+        <!--// console.log(url)-->
+        <!--this.$axios.get('/proxy/proxy.do',{url}).then(res => {-->
+          <!--// console.log(res)-->
+          <!--this.loading = false-->
+          <!--var $ = cheerio.load(res)-->
+          <!--this.historyData = $('div.p1_02').html()-->
+          <!--// console.log(this.historyData)-->
+        <!--}).catch(err => {-->
+          <!--this.loading = false-->
+        <!--})-->
+      <!--}-->
+    <!--},-->
+    <!--created() {-->
+      <!--this.getPartyHistory()-->
+    <!--}-->
+  <!--}-->
+<!--</script>-->
+
+<!--<style lang="scss">-->
+  <!--.content {-->
+    <!--h1 {-->
+      <!--margin-top: 0;-->
+      <!--font-weight: 500;-->
+      <!--font-size: 24px;-->
+      <!--margin-bottom: 0.15rem;-->
+    <!--}-->
+    <!--h2 {-->
+      <!--margin-top: 0.2rem;-->
+      <!--margin-bottom: 0.2rem;-->
+      <!--font-size: 20px;-->
+      <!--font-weight: 400;-->
+      <!--line-height: 1.2;-->
+    <!--}-->
+    <!--p {-->
+      <!--line-height: 2;-->
+      <!--margin-bottom: 0.2rem;-->
+    <!--}-->
+  <!--}-->
+<!--</style>-->
+

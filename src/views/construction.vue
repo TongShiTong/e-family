@@ -1,12 +1,12 @@
 <template>
   <div class="container box">
     <!--<div class="header clearfix">-->
-      <!--<div class="header-left fll" @click="$router.push('/')">-->
-        <!--<img src="../assets/left.png" alt="" class="img">-->
-      <!--</div>-->
-      <!--<div class="login fll">-->
-        <!--随时随地学-->
-      <!--</div>-->
+    <!--<div class="header-left fll" @click="$router.push('/')">-->
+    <!--<img src="../assets/left.png" alt="" class="img">-->
+    <!--</div>-->
+    <!--<div class="login fll">-->
+    <!--党建一点通-->
+    <!--</div>-->
     <!--</div>-->
 
     <router-link to="/detail" class="content" v-for="(item,index) in listData" :key="index">
@@ -77,26 +77,26 @@
 </script>
 
 <style scoped lang="scss">
-  /*.box  {*/
+  .box  {
     /*.header {*/
-      /*background: #c50206;*/
-      /*width: 100%;*/
-      /*height: 1.05rem;*/
+    /*background: #c50206;*/
+    /*width: 100%;*/
+    /*height: 1.05rem;*/
 
-      /*.img {*/
-        /*padding-bottom: 14px;*/
-        /*padding-left: 10px;*/
-      /*}*/
-
-      /*.login {*/
-        /*padding-left: 102px;*/
-        /*line-height: 56px;*/
-        /*font-weight: 400;*/
-        /*font-size: 17px;*/
-        /*color: #fff;*/
-      /*}*/
+    /*.img {*/
+    /*padding-bottom: 14px;*/
+    /*padding-left: 10px;*/
     /*}*/
-  /*}*/
+
+    /*.login {*/
+    /*padding-left: 102px;*/
+    /*line-height: 56px;*/
+    /*font-weight: 400;*/
+    /*font-size: 17px;*/
+    /*color: #fff;*/
+    /*}*/
+    /*}*/
+  }
 
   .content {
     text-decoration: none;

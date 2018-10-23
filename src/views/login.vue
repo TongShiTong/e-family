@@ -1,14 +1,13 @@
 <template>
     <div class="box">
-      <div class="header clearfix">
-        <div class="header-left fll" @click="$router.push('/')">
-          <img src="../assets/left.png" alt="" class="img">
-        </div>
-        <div class="login fll">
-          登录
-        </div>
-      </div>
-
+      <!--<div class="header clearfix">-->
+        <!--<div class="header-left fll" @click="$router.push('/')">-->
+          <!--<img src="../assets/left.png" alt="" class="img">-->
+        <!--</div>-->
+        <!--<div class="login fll">-->
+          <!--登录-->
+        <!--</div>-->
+      <!--</div>-->
       <div class="img-wrap">
         <img src="../assets/logo.png" alt="">
       </div>
@@ -31,11 +30,13 @@
 </template>
 
 <script>
-  import { Toast } from 'mint-ui';
+  import {Toast} from 'mint-ui'
+  import axios from 'axios'
     export default {
       name: "login",
       data() {
         return {
+          isloading: true,
           formData: {
             password: '',
             idnumber:''
@@ -44,12 +45,17 @@
       },
       methods: {
         handleLogin() {
-          this.$axios.post('/login', this.formData).then(res => {
-            console.log(res)
-          //  提交一个事件，写入仓库store
-            this.$store.commit('CHANGE_userInfo', res.userData)
-            this.Toast('登录成功')
-            this.$router.push('/')
+          // let form = new FormData()
+          // form.append('id_card', this.formData.id_card)
+          // form.append('password', this.formData.password)
+          axios.post('http://localhost:3000/login',{idnumber:this.formData.idnumber,password: this.formData.password}).then(res => {
+            if(res.code == 200) {
+              console.log(res)
+              this.$router.push('/')
+              Toast(res.msg)
+            }else {
+              Toast(res.data.msg)
+            }
           })
         }
       }
@@ -67,29 +73,32 @@
     height: auto;
 
 
-    .header {
-      height: 1.13rem;
+    /*.header {*/
+      /*height: 1.13rem;*/
 
-      .img {
-        padding: 10px;
-      }
+      /*.img {*/
+        /*padding: 10px;*/
+      /*}*/
 
-      .login {
-        padding-left: 120px;
-        line-height: 62px;
-        font-weight: 400;
-        font-size: 17px;
-        color: #fff;
-      }
-    }
+      /*.login {*/
+        /*padding-left: 120px;*/
+        /*line-height: 62px;*/
+        /*font-weight: 400;*/
+        /*font-size: 17px;*/
+        /*color: #fff;*/
+      /*}*/
+    /*}*/
 
     /*logo样式*/
     .img-wrap {
       img {
-        padding-top: 20px;
-        padding-left: 40px;
+        padding-top: 80px;
+        padding-left: 86px;
         height: 1.04rem;
         width: 3.85rem;
+        /*width: 4rem;*/
+        /*margin: 6rem auto;*/
+        /*background: #c7000a;*/
       }
     }
 

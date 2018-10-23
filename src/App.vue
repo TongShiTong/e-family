@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
 }
 </script>
 
@@ -30,6 +30,9 @@ export default {
     clear: both;
     width: 0;
     height: 0;
+  }
 
+  .container {
+    margin-top: 60px;
   }
 </style>

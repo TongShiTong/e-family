@@ -1,13 +1,6 @@
 <template>
-  <div class="box">
-    <div class="header clearfix">
-      <div class="header-left fll" @click="$router.push('/')">
-        <img src="../assets/left.png" alt="" class="img">
-      </div>
-      <div class="login fll">
-        掌上组织生活
-      </div>
-    </div>
+  <div class="container box">
+
 
     <div class="banner-wrap">
       <img src="../assets/banner1.png" alt="">
@@ -15,7 +8,7 @@
 
     <div class="box">
       <div class="upper">
-        <router-link to="/learn" class="content-wrap">
+        <router-link to="/list/learn" class="content-wrap">
           <div class="img-wrap">
             <img src="../assets/icon1.png" alt="">
           </div>
@@ -76,29 +69,9 @@
 </script>
 
 <style scoped lang="scss">
-  .box  {
-    .header {
-      background: #c50206;
-      width: 100%;
-      height: 1.05rem;
-
-      .img {
-        padding-bottom: 14px;
-        padding-left: 10px;
-      }
-
-      .login {
-        padding-left: 102px;
-        line-height: 56px;
-        font-weight: 400;
-        font-size: 17px;
-        color: #fff;
-      }
-    }
-  }
-
   .banner-wrap {
     width: 7.5rem;
+    margin-top: -10px;
 
     img {
       width: 100%;
