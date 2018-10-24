@@ -20,6 +20,9 @@ const components = {
   activity: () => import('@/views/activity'),
   construction: () => import('@/views/construction'),
   photograph: () => import('@/views/photograph'),
+  integral: () => import('@/views/integral'),
+  password: () => import('@/views/password'),
+  dues: () => import('@/views/dues'),
 }
 
 export default new Router({
@@ -136,9 +139,33 @@ export default new Router({
           name: 'photograph',
           meta: {
             title: '随时随地拍',
-            type: 4
+            type: 7
           },
           component: components.photograph
+        },
+        {
+          path: 'integral',
+          name: 'integral',
+          meta: {
+            title: '个人量化积分',
+          },
+          component: components.integral
+        },
+        {
+          path: 'password',
+          name: 'password',
+          meta: {
+            title: '修改密码',
+          },
+          component: components.password
+        },
+        {
+          path: 'dues',
+          name: 'dues',
+          meta: {
+            title: '党费缴纳',
+          },
+          component: components.dues
         },
       ]
 

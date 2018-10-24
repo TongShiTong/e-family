@@ -11,7 +11,9 @@
         <div class="img-wrap">
           <img src="../assets/bt_bg.png" alt="">
         </div>
-        <div class="desc">你还没有登录，请登录</div>
+        <div class="desc">你还没有登录，请
+          <router-link to="/list/login">登录</router-link>
+        </div>
       </div>
     </div>
     <div class="imges">
@@ -20,17 +22,17 @@
         <div class="title">个人信息</div>
         <div class="after-img"><img src="../assets/right.png" alt=""></div>
       </router-link>
-      <router-link to="/info" class="imges-wrap">
+      <router-link to="list/integral" class="imges-wrap">
         <div class="befor-img"><img src="../assets/grlhjf.png" alt=""></div>
         <div class="title">个人量化积分</div>
         <div class="after-img"><img src="../assets/right.png" alt="" class="img"></div>
       </router-link>
-      <router-link to="/info" class="imges-wrap">
+      <router-link to="list/password" class="imges-wrap">
         <div class="befor-img"><img src="../assets/xgmm1.png" alt=""></div>
         <div class="title">修改密码</div>
         <div class="after-img"><img src="../assets/right.png" alt=""></div>
       </router-link>
-      <router-link to="/info" class="imges-wrap">
+      <router-link to="list/dues" class="imges-wrap">
         <div class="befor-img"><img src="../assets/icon3.png" alt=""></div>
         <div class="title">党费缴纳</div>
         <div class="after-img"><img src="../assets/right.png" alt=""></div>
@@ -90,6 +92,12 @@
         text-align: center;
         color: #fff;
         font-size: 12px;
+
+        a {
+          text-decoration: none;
+          color: #fff;
+          font-size: 12px;
+        }
       }
     }
   }

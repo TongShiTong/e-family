@@ -1,9 +1,9 @@
 <template>
   <!--fixed绝对定位到上面-->
     <mt-header :title="title" fixed>
-      <router-link to="/" slot="left">
+      <div @click="handleBack" slot="left">
         <mt-button icon="back"></mt-button>
-      </router-link>
+      </div>
     </mt-header>
 </template>
 
@@ -13,6 +13,11 @@
       computed: {
         title() {
           return this.$route.meta.title;
+        }
+      },
+      methods: {
+        handleBack() {
+          this.$router.go(-1)
         }
       }
     }

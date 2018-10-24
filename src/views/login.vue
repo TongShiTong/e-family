@@ -12,7 +12,7 @@
         <img src="../assets/logo.png" alt="">
       </div>
 
-      <form action="" class="form">
+      <div class="form">
         <div class="input-wrap">
           <input type="text"placeholder="身份证号" v-model="formData.idnumber">
         </div>
@@ -24,7 +24,7 @@
         <div class="login">
           <mt-button size="large" class="btn" @click="handleLogin">登录</mt-button>
         </div>
-      </form>
+      </div>
 
     </div>
 </template>
@@ -51,13 +51,14 @@
           axios.post('http://localhost:3000/login',{idnumber:this.formData.idnumber,password: this.formData.password}).then(res => {
             if(res.code == 200) {
               console.log(res)
-              this.$router.push('/')
               Toast(res.msg)
+              this.$router.push({name: 'index'})
             }else {
               Toast(res.data.msg)
             }
           })
-        }
+        },
+        // onSubmit(){return false}
       }
     }
 </script>

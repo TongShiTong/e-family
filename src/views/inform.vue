@@ -1,21 +1,21 @@
 <template>
-  <div class="box">
+  <div class="container box">
     <div class="header clearfix">
       <div class="login fll">
         通知早知道
       </div>
     </div>
 
-    <router-link to="/detail" class="content">
+    <router-link to="/detail" class="content" v-for="(item,index) in listData" :key="index">
       <div class="content-left">
         <img src="../assets/iconfont_gonggaotongzhi.png" alt="">
       </div>
       <div class="content-right">
         <div class="desc">
-          信息工程学院召开党员精准帮扶第三批“四困”学生工作部署会
+          {{item.title}}
         </div>
         <div class="date">
-          2018-05-29 17:12:50
+          {{item.currentTime}}
         </div>
       </div>
     </router-link>
@@ -32,6 +32,44 @@
       name: "iinform",
       components: {
           tabs
+      },
+      data() {
+        return {
+          listData: [],
+          page: 2,
+          rows: 10,
+          type: 0,
+          loadingTransition: false,
+          refreshing: false,
+          loading: false,
+          loadedAll: false
+        }
+      },
+      methods: {
+        getListData() {
+          let page = this.page;
+          let rows = this.rows;
+          this.loadingTransition = true
+          this.$axios.get('/news/newsList.do', {page, rows, type: this.$route.meta.type}).then(res => {
+            console.log(res)
+            if (res.code == 1) {
+              this.listData = res.rows
+              this.loadingTransition = false
+            } else {
+              alert('请求有误')
+            }
+          }).catch(err => {
+            this.loadingTransition = false
+            this.$toast.info('数据获取失败')
+          })
+          // axios.get(`http://211.67.177.56:8080/hhdj/news/newsList.do?page=${this.page}&rows=${this.rows}&type=${type}`)
+          //   .then(res => {
+          //     this.listData = res.data.rows
+          //   })
+        },
+      },
+      created() {
+        this.getListData()
       }
     }
 </script>
@@ -39,6 +77,10 @@
 <style scoped lang="scss">
   .box  {
     .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       background: #c50206;
       width: 100%;
       height: 1.05rem;
@@ -53,6 +95,7 @@
     }
 
     .title {
+      margin-bottom: 60px;
       padding-top: 10px;
       font-weight: 500;
       font-size: 16px;
